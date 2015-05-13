@@ -33,7 +33,7 @@
 			effectArgs: 1000,
 			elements: null,
 			load: null,
-			offset:0
+			offset: 0
 		};
 	}
 	LazyLoad.prototype = {
@@ -50,6 +50,9 @@
 			container.bind('scroll', function() {
 				_this.load();
 			});
+			$(window).bind('resize', function() {
+				_this.load();
+			});
 		},
 		load: function() {
 			var _this = this;
@@ -60,6 +63,7 @@
 				if (_this.checkPosition(this)) {
 					_this.show(this);
 				}
+				_this.settings.load&&_this.settings.load.call(_this,this)
 			});
 		},
 		checkPosition: function(img) {
@@ -67,7 +71,7 @@
 			var clientHeight = this.settings.container.clientHeight || document.documentElement.clientHeight || document.body.clientHeight; //可视区域
 			var clientWidth = this.settings.container.clientWidth || document.documentElement.clientWidth || document.body.clientWidth;
 			var scrollTop = $(this.settings.container).scrollTop();
-			if (offsetTop+this.settings.offset <= clientHeight + scrollTop) {
+			if (offsetTop + this.settings.offset <= clientHeight + scrollTop) {
 				return true;
 			}
 			return false;
@@ -78,7 +82,7 @@
 			var self = img;
 			self.loaded = false;
 			var original = $this.attr('data-src');
-			if (($this.attr('src') === undefined || $this.attr('src') === false || $this.attr('src') =="") && $this.is('img')) {
+			if (($this.attr('src') === undefined || $this.attr('src') === false || $this.attr('src') == "") && $this.is('img')) {
 				$this.attr('src', _this.loadImg);
 			}
 			$('<img/>').attr('src', original).on('load', function() {

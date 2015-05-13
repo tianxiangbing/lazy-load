@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>点击的进度条</title>
+		<title>图片懒加载</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-		<link rel="stylesheet" type="text/css" href="../src/click-progress.css">
+		<link rel="stylesheet" type="text/css" href="../src/lazy-load.css">
 	</head>
-	<body>
-		<div class="progress"><div class="progress-finished"></div></div>
-        <input type="button" value="click" id="click"/>
+	<body class="demo-lazy-load">
+		<div><img src="loading.gif" data-src="http://ott.wansecheng.com/weidian/advertise/1429202253872.jpg" alt=""></div>
 		<br/>
 		<br/>
-		<div class="transverse"><div class="progress-finished"></div></div>
-        <input type="button" value="click" id="click2"/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div><img data-src="http://ott.wansecheng.com/weidian/advertise/1429256031872.jpg" alt=""></div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<img data-src="http://ott.wansecheng.com/weidian/wdgoods/1429250625186.jpg" alt="">
+		<br/>
+		<img data-src="http://ott.wansecheng.com/weidian/wdgoods/1429860635284.jpg" alt="">
+		<br/>
+		<img data-src="http://ott.wansecheng.com/weidian/wdgoods/1430072969564.png" alt="">
 		<script type="text/javascript" src="../src/zepto.js"></script>
 		<script type="text/javascript" src="../src/require.js"></script>
 		<script>
@@ -23,42 +55,16 @@
 				$: 'zepto'
 			}
 		});
-		require(['click-progress','$'], function(ClickProgress,$) {
-			var cp = new ClickProgress();
-			cp.init({
-				trigger:$('#click'),
-				target:$('.progress'),
-				v:5,
-				a:1,
-				change:'height',
-				time:30,
-				clicked:function(a,b,c){
-					console.log(c,'加油')
-					},
-				progress:function(a,b,c){
-					console.log(c)
-					},
-				callback:function(){
-					alert('完成了')
-				}
-			});
-			var cp2 = new ClickProgress();
-			cp2.init({
-				trigger:$('#click2'),
-				target:$('.transverse'),
-				v:5,
-				a:1,
-				change:'height',
-				time:30,
-				clicked:function(a,b,c){
-					console.log(c,'加油')
-					},
-				progress:function(a,b,c){
-					console.log(c)
-					},
-				callback:function(){
-					alert('完成了')
-				}
+		require(['lazy-load',"$"], function(LazyLoad,$) {
+			var obj = new LazyLoad();
+			obj.init({
+				elements:'img',
+				container: window,
+				effect: 'show',
+				effectArgs: 'slow',
+				loadImg:'loading.gif',
+				load: null,
+				offset: 0
 			});
 		});
 		</script>
