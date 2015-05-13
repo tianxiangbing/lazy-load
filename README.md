@@ -23,8 +23,7 @@
         load: null,
         offset: 0
     });
-
-```
+***
 #属性和方法
 ##elements:
     dom的集合，一般为需要懒加载的img标签集合，如果是动态加载的内容，请在html加载完成之后再调用init
