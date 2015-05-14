@@ -33,7 +33,8 @@
 			effectArgs: 1000,
 			elements: null,
 			load: null,
-			offset: 0
+			offset: 0,
+			event: 'scroll'
 		};
 	}
 	LazyLoad.prototype = {
@@ -47,10 +48,10 @@
 		bindEvent: function() {
 			var container = $(this.settings.container);
 			var _this = this;
-			container.bind('scroll', function() {
+			container.on(_this.settings.event, function() {
 				_this.load();
 			});
-			$(window).bind('resize', function() {
+			$(window).on('resize', function() {
 				_this.load();
 			});
 		},
@@ -63,7 +64,7 @@
 				if (_this.checkPosition(this)) {
 					_this.show(this);
 				}
-				_this.settings.load&&_this.settings.load.call(_this,this)
+				_this.settings.load && _this.settings.load.call(_this, this)
 			});
 		},
 		checkPosition: function(img) {

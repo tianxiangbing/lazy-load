@@ -31,6 +31,8 @@
     初始化方法
 ##container:   window
     触发滚动条的容器，默认为window,可不传
+##event:  "scroll"
+    容器触发事件，默认为scroll
 ##effect:
     触发的事件方法，默认为 show
 ##effectArgs
