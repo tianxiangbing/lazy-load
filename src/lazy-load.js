@@ -69,9 +69,9 @@
 		},
 		checkPosition: function(img) {
 			var offsetTop = $(img).offset().top;
-			var clientHeight = this.settings.container.clientHeight || document.documentElement.clientHeight || document.body.clientHeight; //可视区域
-			var clientWidth = this.settings.container.clientWidth || document.documentElement.clientWidth || document.body.clientWidth;
-			var scrollTop = $(this.settings.container).scrollTop();
+			var clientHeight = window.clientHeight || document.documentElement.clientHeight || document.body.clientHeight; //可视区域
+			var clientWidth = window.clientWidth || document.documentElement.clientWidth || document.body.clientWidth;
+			var scrollTop = $(window).scrollTop();
 			if (offsetTop + this.settings.offset <= clientHeight + scrollTop) {
 				return true;
 			}
