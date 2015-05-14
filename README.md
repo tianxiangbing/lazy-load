@@ -1,7 +1,7 @@
 # lazy-load
 图片懒加载
 例子见[DEMO](http://www.lovewebgames.com/jsmodule/lazy-load.html)  
-![预览效果:](/example/lazy-load.png "点击预览效果")
+![预览效果:](/example/lazy-load.gif "点击预览效果")
 #使用方法案例:
     <img data-src="http://ott.wansecheng.com/weidian/wdgoods/1429250625186.jpg" alt="">
     $('img').LazyLoad({
