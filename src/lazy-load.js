@@ -43,7 +43,19 @@
 			this.elements = $(this.settings.elements);
 			this.loadImg = this.settings.loadImg || this.loadImg;
 			this.bindEvent();
-			this.load();
+			if (this.settings.event == "scroll") {
+				this.load();
+			}
+			this.initImg();
+		},
+		initImg: function() {
+			var _this = this;
+			this.elements.each(function() {
+				var $this = $(this);
+				if (($this.attr('src') === undefined || $this.attr('src') === false || $this.attr('src') == "") && $this.is('img')) {
+					$this.attr('src', _this.loadImg);
+				}
+			})
 		},
 		bindEvent: function() {
 			var container = $(this.settings.container);
@@ -83,9 +95,6 @@
 			var self = img;
 			self.loaded = false;
 			var original = $this.attr('data-src');
-			if (($this.attr('src') === undefined || $this.attr('src') === false || $this.attr('src') == "") && $this.is('img')) {
-				$this.attr('src', _this.loadImg);
-			}
 			$('<img/>').attr('src', original).on('load', function() {
 				self.loaded = true;
 				$this.hide();
