@@ -39,6 +39,8 @@
     要给effect传的参数，可不传
 ##loadImg
     加载等待时显示的图片地址，默认是一个1pxx1px的图
+##loadDom
+    加载时显示的dom元素，弥补loadImg的灵活性.
 ##offset:
     与图片的差值，默认0
 ##load:function(img)
